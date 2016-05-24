@@ -11,7 +11,8 @@ export default class Previewer extends React.Component {
   }
 
   changeCode(md) {
-    const mu = marked(md, {sanitize: true});
+    const mu = marked(md, {sanitize: true, gfm: true});
+    this.setState({mu});
     this.setState({html:{__html:mu}});
   }
 
@@ -22,12 +23,14 @@ export default class Previewer extends React.Component {
 
   render() {
     return (
-      <div class="main">
-        <div id="markDown">
-          {console.log(this)}
+      <div class="marklift">
+        <div class="markDown">
           <textarea onChange={this.mdChange.bind(this)} placeholder="enter Markdown here" />
         </div>
-        <div id="markUp" dangerouslySetInnerHTML={this.state.html}>
+        <div class="markUp">
+          {this.state.mu}
+        </div>
+        <div class="htmlPreview" dangerouslySetInnerHTML={this.state.html}>
         </div>
       </div>
     );
