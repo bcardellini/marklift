@@ -1,4 +1,5 @@
 import React from "react";
+import Reference from "./Reference"
 
 var marked = require('marked');
 require('../sass/marklift.scss');
@@ -8,31 +9,57 @@ export default class Previewer extends React.Component {
 
   constructor () {
     super();
-    this.state = { md: "sample markdown", html:{__html:"Preview will appear here"} };
+    this.state = {  md: "sample markdown",
+                    html: {__html:"Preview will be rendered here"},
+                    mu: "HTML markup will be displayed here",
+                    mode: "rendered"
+                 };
   }
 
-  changeCode(md) {
+  updateMarkup(md) {
     const mu = marked(md, {sanitize: true, gfm: true});
     this.setState({mu});
     this.setState({html:{__html:mu}});
   }
 
-  mdChange(e) {
+  markdownChange(e) {
     const md = e.target.value;
-    this.changeCode(md);
+    this.updateMarkup(md);
+  }
+
+  modeClick(e){
+    const newMode = e.target.innerHTML;
+    if ( this.state.mode !== newMode ) {
+      this.setState({mode:newMode});
+    }
   }
 
   render() {
+    const navItems = ["rendered","html","reference"].map(
+      (mode, i) => <li className={mode+'Nav'} key={i} onClick={this.modeClick.bind(this)}>{mode}</li>
+    );
+    const markUpClass = "markUp " + this.state.mode;
+
     return (
       <div class="marklift">
         <div class="markDown">
-          <textarea onChange={this.mdChange.bind(this)} placeholder="enter Markdown here" />
+          <h2>markdown</h2>
+          <textarea onChange={this.markdownChange.bind(this)} placeholder="enter markdown here" />
         </div>
-        <div class="markUp">
-          {this.state.mu}
+        <div className={markUpClass}>
+          <nav><ul>{navItems}</ul></nav>
+          <div className="slider">
+            <div className="rendered" dangerouslySetInnerHTML={this.state.html}>
+            </div>
+            <div className="html">
+              {this.state.mu}
+            </div>
+            <div className="reference">
+              <Reference/>
+            </div>
+          </div>
         </div>
-        <div class="htmlPreview" dangerouslySetInnerHTML={this.state.html}>
-        </div>
+
       </div>
     );
   }
