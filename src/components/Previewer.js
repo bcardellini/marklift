@@ -1,6 +1,7 @@
 import React from "react";
 
 var marked = require('marked');
+require('../sass/marklift.scss');
 
 
 export default class Previewer extends React.Component {
