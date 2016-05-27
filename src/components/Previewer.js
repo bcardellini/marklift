@@ -49,14 +49,16 @@ export default class Previewer extends React.Component {
         </div>
         <div className={markUpClass}>
           <nav><ul>{navItems}</ul></nav>
-          <div className="slider">
-            <div className="rendered" dangerouslySetInnerHTML={this.state.html}>
-            </div>
-            <div className="html">
-              {this.state.mu}
-            </div>
-            <div className="reference">
-              <Reference/>
+          <div className="sliderContainer">
+            <div className="slider">
+              <div className="rendered" dangerouslySetInnerHTML={this.state.html}>
+              </div>
+              <div className="html">
+                {this.state.mu}
+              </div>
+              <div className="reference">
+                <Reference/>
+              </div>
             </div>
           </div>
         </div>
