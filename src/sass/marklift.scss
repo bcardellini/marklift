@@ -1,6 +1,7 @@
 $bodyBg : #4a525a;
 $markUpBg : desaturate(lighten($bodyBg, 20%),3%);
 $navBg: darken($markUpBg, 10%);
+$codeBg: $navBg;
 $nav: #222222;
 $tranSpeed: 0.4s;
 
@@ -41,7 +42,7 @@ body {
   padding:0;
   flex:1;
   position:relative;
-  overflow-x:hidden;
+  overflow:hidden;
   nav {
     width:100%;
     color:$nav;
@@ -72,24 +73,39 @@ body {
   &.rendered {
     .slider{ left:0;  }
     .rendered {opacity:1;}
-    .renderedNav { background:transparent; }
+    .renderedNav { background:$markUpBg; }
   }
 
   &.html {
-    .slider { left:-100%;  }
+    .slider { left:-100%; }
     .html {opacity:1;}
-    .htmlNav { background:transparent; }
+    .htmlNav { background:$markUpBg; }
   }
   &.reference {
     .slider{ left:-200%; }
     .reference { opacity:1 };
-    .referenceNav { background:transparent; }
+    .referenceNav { background:$markUpBg; }
   }
   .slider>div {
     flex:1;
+    box-sizing:border-box;
+    max-width:33%;
     padding:3rem 1rem 0;
     opacity:0;
     transition:opacity $tranSpeed;
   }
+  .reference span.gh,
+  .reference span.gu,
+  .reference span.gs {
+  }
+  pre {
+    padding:0.5rem;
+    background:$codeBg;
+    white-space:pre-wrap;
+  }
+  .rendered code {
+    background:$codeBg;
+  }
+
 
 }
