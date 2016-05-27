@@ -75,7 +75,6 @@ body {
     .rendered {opacity:1;}
     .renderedNav { background:$markUpBg; }
   }
-
   &.html {
     .slider { left:-100%; }
     .html {opacity:1;}
@@ -89,23 +88,25 @@ body {
   .slider>div {
     flex:1;
     box-sizing:border-box;
-    max-width:33%;
     padding:3rem 1rem 0;
     opacity:0;
     transition:opacity $tranSpeed;
-  }
-  .reference span.gh,
-  .reference span.gu,
-  .reference span.gs {
+    height:100%;
+    overflow-y:auto;
   }
   pre {
     padding:0.5rem;
     background:$codeBg;
     white-space:pre-wrap;
   }
+  a {
+    color:#ddd;
+  }
   .rendered code {
     background:$codeBg;
   }
-
+  .html {
+    white-space:pre-line;
+  }
 
 }

@@ -17,7 +17,8 @@ export default class Previewer extends React.Component {
   }
 
   updateMarkup(md) {
-    const mu = marked(md, {sanitize: true, gfm: true});
+    var mu = marked(md, {sanitize: true, gfm: true, breaks: true});
+    mu = mu.replace(/<br>/g,"<br>\n");
     this.setState({mu});
     this.setState({html:{__html:mu}});
   }
