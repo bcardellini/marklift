@@ -1,6 +1,6 @@
 import React from "react";
 import Reference from "./Reference"
-const flexibility = require('flexibility');
+//const flexibility = require('flexibility');
 const marked = require('marked');
 require('../sass/marklift.scss');
 
