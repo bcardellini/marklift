@@ -9,7 +9,7 @@ export default class Reference extends React.Component {
       <h2>Markdown Syntax guide</h2>
 
       <p>Adapted from GitHub guide <a href="https://guides.github.com/features/mastering-markdown/
-">Mastering Markdown</a></p>
+" target="_blank">Mastering Markdown</a></p>
 
       <h3>Headers</h3>
 
@@ -90,11 +90,9 @@ export default class Reference extends React.Component {
       </code></pre>
       </div>
 
-      <p><a id="GitHub-flavored-markdown" title="GFM" class="toc-item"></a></p>
-
       <h2>GitHub Flavored Markdown</h2>
 
-      <p>The Marklift previewer uses the <a href="https://www.npmjs.com/package/marked">marked</a> markdown parser set to compile <a href="https://help.github.com/articles/basic-writing-and-formatting-syntax/">Github Flavored Markdown</a>.
+      <p>The Marklift previewer uses the <a href="https://www.npmjs.com/package/marked" target="_blank">marked</a> markdown parser set to compile <a href="https://help.github.com/articles/basic-writing-and-formatting-syntax/" target="_blank">Github Flavored Markdown</a>.
       </p>
 
       </div>
