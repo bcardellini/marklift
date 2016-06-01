@@ -1,50 +1,139 @@
 $bodyBg : #4a525a;
 $markUpBg : desaturate(lighten($bodyBg, 20%),3%);
 $navBg: darken($markUpBg, 10%);
-$codeBg: $navBg;
+$codeBg: darken($navBg, 15%);
 $nav: #222222;
 $tranSpeed: 0.4s;
 
+$break1:400px;
+$break2:600px;
+
+html, body { width:100%; height:100%; margin:0; padding:0;}
 body {
   background-color:$bodyBg;
-  color: #ffffff;
-  font-family:"Slabo 13px", serif;
-  margin:1rem;
+  box-sizing:border-box;
+  @media screen and (min-width: $break1) {
+    padding:1rem;
+  }
 }
 
-.marklift {
-  display:flex;
-  flex-wrap:wrap;
-  position:relative;
-  width:100%;
+#app {
+  color: #ffffff;
+  margin:0 auto;
   max-width:1200px;
-  height:80vh;
+  height:100vh;
+  min-height:400px;
+  width:100%;
+  position:relative;
+  font-family:"Slabo 13px", serif;
+  h1, h2, h3, h4, h5, h6, b, strong {
+    font-family:"Roboto Slab", serif;
+  }
+  b, strong {
+    font-size:0.95em;
+  }
+  @media screen and (min-width: $break1){
+    height:90vh;
+  }
+  @media screen and (min-width: $break2){
+    min-height:300px;
+  }
+}
+#app > div {
+  height:100%;
+}
+#app .appWrap {
+  height:100%;
+  display:flex;
+  flex-direction:column;
+}
+
+header h1 {
+  font-size:30px;
+  padding-left:1rem;
+  font-size: 30px;
+  margin: 0;
+  padding-left: 1rem;
+  box-shadow: 0 -1px 2px 3px rgba(0,0,0,0.3);
+  z-index: 200;
+  position: relative;
+  @media screen and (min-width: $break1) {
+    margin:1rem 0 0.5rem 0;
+    padding-left:0;
+    box-shadow:none;
+  }
+}
+.marklift {
+  position:relative;
+  flex-grow:1;
+  width:100%;
+  height:100%;
+  @media screen and (min-width: $break1) {
+    border-radius:3px;
+    overflow:hidden;
+  }
+}
+.markliftInner {
+  // need this wrapper for chrome nested flex heights
+  position:absolute;
+  left:0;
+  right:0;
+  top:0;
+  bottom:0;
+  @media screen and (min-width: $break2) {
+    display:flex;
+  }
 }
 .markDown {
-  background:white;
+  background:#eee;
   color:#444;
   padding:0;
-  flex:1;
+  height:40%;
+  position:relative;
+  @media screen and (min-width: $break2){
+    height:100%;
+    flex:1;
+  }
   textarea {
-    padding:4rem 1rem 1rem;
+    padding:2.5rem 1rem 1rem;
+    @media screen and (min-width: $break2){
+      padding:3.5rem 1rem 1rem;
+    }
     background:transparent;
     color:inherit;
     border:none;
     box-sizing:border-box;
     width:100%;
-    height:80vh;
+    height:100%;
     font-size:16px;
+    &:focus{
+      border:0;
+      outline:0;
+      background:white;
+    }
   }
-  h2 { position:absolute; left:1rem;}
+  h2 {
+    position:absolute;
+    margin:0;
+    padding:0.5rem 0 0 1rem;
+    box-sizing:border-box;
+    width:100%;
+    background:linear-gradient(to right, #eeeeee 40%, transparent);
+  }
 }
 .markUp {
   background:$markUpBg;
   padding:0;
-  flex:1;
+  height:60%;
+  box-sizing:border-box;
   display:flex;
   flex-direction:column;
   position:relative;
   overflow:hidden;
+  @media screen and (min-width: $break2){
+    height:100%;
+    flex:1;
+  }
   nav {
     width:100%;
     color:$nav;
@@ -92,11 +181,14 @@ body {
   .slider>div {
     flex:1;
     box-sizing:border-box;
-    padding:1rem 1rem 0;
+    padding:0 1rem 0;
     opacity:0;
     transition:opacity $tranSpeed;
     height:100%;
     overflow-y:auto;
+    &.html {
+      padding:1rem 1rem 0;
+    }
   }
   pre {
     padding:0.5rem;
@@ -105,6 +197,9 @@ body {
   }
   a {
     color:#ddd;
+  }
+  p {
+    margin:1em 0;
   }
   .rendered code {
     background:$codeBg;

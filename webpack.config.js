@@ -1,6 +1,8 @@
 var debug = process.env.NODE_ENV !== "production";
 var webpack = require('webpack');
-var ExtractTextPlugin = require('extract-text-webpack-plugin');
+const autoprefixer = require('autoprefixer');
+const postcssFlexibility = require('postcss-flexibility');
+const ExtractTextPlugin = require('extract-text-webpack-plugin');
 
 
 module.exports = {
@@ -22,7 +24,7 @@ module.exports = {
         test: /\.scss$/,
         loader: ExtractTextPlugin.extract(
           'style', // backup loader when not building .css file
-          'css!sass' // loaders to preprocess css
+          'css!postcss!sass' // loaders to preprocess css
         )
       }
     ]
@@ -30,6 +32,9 @@ module.exports = {
   output: {
     path: __dirname + "/pub",
     filename: "js/client.min.js"
+  },
+  postcss: function () {
+      return [autoprefixer, postcssFlexibility];
   },
   plugins: debug ? [new ExtractTextPlugin('marklift.css')] : [
     new ExtractTextPlugin('marklift.css'),

@@ -8,7 +8,7 @@ export default class Layout extends React.Component {
   render() {
     const title = "marklift";
     return (
-      <div>
+      <div className="appWrap">
         <Header title={title} />
         <Previewer />
         <Footer />

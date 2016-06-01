@@ -1,7 +1,7 @@
 import React from "react";
 import Reference from "./Reference"
-
-var marked = require('marked');
+const flexibility = require('flexibility');
+const marked = require('marked');
 require('../sass/marklift.scss');
 
 
@@ -10,7 +10,7 @@ export default class Previewer extends React.Component {
   constructor () {
     super();
     this.state = {  md: "sample markdown",
-                    html: {__html:"Preview will be rendered here"},
+                    html: {__html:"<p>Preview will be rendered here</p>"},
                     mu: "HTML markup will be displayed here",
                     mode: "rendered"
                  };
@@ -43,26 +43,27 @@ export default class Previewer extends React.Component {
 
     return (
       <div class="marklift">
-        <div class="markDown">
-          <h2>markdown</h2>
-          <textarea onChange={this.markdownChange.bind(this)} placeholder="enter markdown here" />
-        </div>
-        <div className={markUpClass}>
-          <nav><ul>{navItems}</ul></nav>
-          <div className="sliderContainer">
-            <div className="slider">
-              <div className="rendered" dangerouslySetInnerHTML={this.state.html}>
-              </div>
-              <div className="html">
-                {this.state.mu}
-              </div>
-              <div className="reference">
-                <Reference/>
+        <div class="markliftInner">
+          <div class="markDown">
+            <h2>markdown</h2>
+            <textarea onChange={this.markdownChange.bind(this)} placeholder="enter markdown here" />
+          </div>
+          <div className={markUpClass}>
+            <nav><ul>{navItems}</ul></nav>
+            <div className="sliderContainer">
+              <div className="slider">
+                <div className="rendered" dangerouslySetInnerHTML={this.state.html}>
+                </div>
+                <div className="html">
+                  {this.state.mu}
+                </div>
+                <div className="reference">
+                  <Reference/>
+                </div>
               </div>
             </div>
           </div>
         </div>
-
       </div>
     );
   }
