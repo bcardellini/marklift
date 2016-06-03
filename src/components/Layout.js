@@ -6,7 +6,7 @@ import Previewer from "./Previewer";
 
 export default class Layout extends React.Component {
   render() {
-    const title = "marklift";
+    const title = "marklîft";
     return (
       <div className="appWrap">
         <Header title={title} />

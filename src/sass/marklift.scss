@@ -93,6 +93,7 @@ header h1 {
   padding:0;
   height:40%;
   position:relative;
+  z-index:50;
   @media screen and (min-width: $break2){
     height:100%;
     flex:1;
@@ -117,6 +118,7 @@ header h1 {
   }
   h2 {
     position:absolute;
+    z-index:100;
     margin:0;
     padding:0.5rem 0 0 1rem;
     box-sizing:border-box;
@@ -172,10 +174,10 @@ header h1 {
     .rendered {opacity:1;}
     .renderedNav { background:$markUpBg; }
   }
-  &.html {
+  &.markup {
     .slider { left:-100%; }
-    .html {opacity:1;}
-    .htmlNav { background:$markUpBg; }
+    .markup {opacity:1;}
+    .markupNav { background:$markUpBg; }
   }
   &.reference {
     .slider{ left:-200%; }
@@ -190,7 +192,7 @@ header h1 {
     transition:opacity $tranSpeed;
     height:100%;
     overflow-y:auto;
-    &.html {
+    &.markup {
       padding:1rem 1rem 0;
     }
   }
@@ -208,7 +210,7 @@ header h1 {
   .rendered code {
     background:$codeBg;
   }
-  .html {
+  .markup {
     white-space:pre-line;
   }
 

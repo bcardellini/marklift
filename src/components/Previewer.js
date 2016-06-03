@@ -36,7 +36,7 @@ export default class Previewer extends React.Component {
   }
 
   render() {
-    const navItems = ["rendered","html","reference"].map(
+    const navItems = ["rendered","markup","reference"].map(
       (mode, i) => <li className={mode+'Nav'} key={i} onClick={this.modeClick.bind(this)}>{mode}</li>
     );
     const markUpClass = "markUp " + this.state.mode;
@@ -46,7 +46,7 @@ export default class Previewer extends React.Component {
         <div class="markliftInner">
           <div class="markDown">
             <h2>markdown</h2>
-            <textarea onChange={this.markdownChange.bind(this)} placeholder="enter markdown here" />
+            <textarea onChange={this.markdownChange.bind(this)} spellcheck="false" placeholder="enter markdown here" />
           </div>
           <div className={markUpClass}>
             <nav><ul>{navItems}</ul></nav>
@@ -54,7 +54,7 @@ export default class Previewer extends React.Component {
               <div className="slider">
                 <div className="rendered" dangerouslySetInnerHTML={this.state.html}>
                 </div>
-                <div className="html">
+                <div className="markup">
                   {this.state.mu}
                 </div>
                 <div className="reference">
