@@ -42,9 +42,9 @@ export default class Previewer extends React.Component {
     const markUpClass = "markUp " + this.state.mode;
 
     return (
-      <div class="marklift">
-        <div class="markliftInner">
-          <div class="markDown">
+      <div className="marklift">
+        <div className="markliftInner">
+          <div className="markDown">
             <h2>markdown</h2>
             <textarea onChange={this.markdownChange.bind(this)} spellcheck="false" placeholder="enter markdown here" />
           </div>
